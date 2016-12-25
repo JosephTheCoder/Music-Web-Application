@@ -10,6 +10,9 @@ class Album(models.Model):  #normal python class
     genre = models.CharField(max_length=100)
     album_logo = models.CharField(max_length=1000)   #1000 cause its gonna be the album cover, an url that is probably big
 
+    def __str__(self):
+        return self.album_title + '-' + self.artist
+
 class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE) #whenever we delete an album, the songs are also deleted
     file_type = models.CharField(max_length=10)  #for each song type
