@@ -17,3 +17,7 @@ class Song(models.Model):
     album = models.ForeignKey(Album, on_delete=models.CASCADE) #whenever we delete an album, the songs are also deleted
     file_type = models.CharField(max_length=10)  #for each song type
     song_title = models.CharField(max_length=250)
+    is_favorite = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.song_title
