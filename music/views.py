@@ -33,3 +33,38 @@ class AlbumUpdate(UpdateView):
 class AlbumDelete(DeleteView):
     model = Album
     success_url = reverse_lazy('music:index')
+
+
+class UserFormView(View):
+    form_class = UserForm
+    template_name = 'music/registration_form.html'
+
+    #display blank form
+    def get(self, request):
+        form = self.form_class(None)
+        return render(request, self.template_name, {'form': form})
+
+    # process form data
+    def post(self, request):
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+
+            user = form.save(commit=False) #creates an object from the form, doesnt save to the database
+
+            #clean normalized data
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user.set_password(password)
+            user.save()
+
+            #returns User Object if credentials are correct
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+
+                if user.is_active:  #account is not banned
+                    login(request, user)
+                    return redirect('music:index')
+
+        return render(request, self.template_name, {'form': form})
