@@ -5,11 +5,10 @@ app_name = 'music'
 
 urlpatterns = [
     # /music/
-    url(r'^$', views.index, name='index'),  #if the user only requests music/ then index is loaded
+    url(r'^$', views.IndexView.as_view(), name='index'),  #if the user only requests music/ then index is loaded
 
     # /music/<album_id>/
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 
-    # /music/<album_id>/favorite/    Link used to perform logic in order to favorite a song, then it redirects to the previous page
-    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name='favorite'),
+
 ]

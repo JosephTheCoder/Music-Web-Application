@@ -7,7 +7,7 @@
     {% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Gruppo' rel="stylesheet" type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'music/style2.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 </head>
@@ -50,13 +50,13 @@
             </form>
 
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"> <!--SONGS BUTTON-->
+                <li class="active"> <!--ADD ALBUM BUTTON-->
                     <a href="#">
                         <span class="glyphicon glyphicon-plus" aria-hidden=""true></span>&nbsp; Add Album
                     </a>
                 </li>
 
-                <li class="active"> <!--SONGS BUTTON-->
+                <li class="active"> <!--LOGOUT BUTTON-->
                     <a href="#">
                         <span class="glyphicon glyphicon-off" aria-hidden=""true></span>&nbsp; Logout
                     </a>
@@ -66,7 +66,6 @@
     </div>
 </nav>
     {% block body %}
-
     {% endblock %}
 </body>
 </html>
